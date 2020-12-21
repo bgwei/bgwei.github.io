@@ -1,0 +1,84 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <title>The Elf Code - Level 1</title>
+    <meta charset = "utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <!-- load header -->
+    <script>
+        $(function(){ 
+          $("#header").load("header.html");    
+        }); 
+    </script>
+</head>
+<body>
+    <div id="header"></div>
+    <div class = "container text-center">
+        <h1>LEVEL 6</h1>
+        <h3>Constraints</h3>
+        <p>Program the elf to the end goal in no more than 2 lines of code and no more than 2 elf commands.</p>
+        <img src='img/elf-code/level1.png'/>
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'London')">London</button>
+            <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+            <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+          </div>
+          
+          <div id="London" class="tabcontent">
+            <h3>London</h3>
+            <p>London is the capital city of England.</p>
+          </div>
+          
+          <div id="Paris" class="tabcontent">
+            <h3>Paris</h3>
+            <p>Paris is the capital of France.</p> 
+          </div>
+          
+          <div id="Tokyo" class="tabcontent">
+            <h3>Tokyo</h3>
+            <p>Tokyo is the capital of Japan.</p>
+          </div>
+          
+          <script>
+          function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+          }
+            </script>
+        <h3>Solution</h3>
+        <script>
+            function showCode() {
+              var x = document.getElementById("code");
+              if (x.style.display === "none") {
+                x.style.display = "block";
+              } else {
+                x.style.display = "none";
+              }
+            }
+        </script>
+        <button onclick="showCode()">Show Code</button>
+        <div id = "code">
+            <pre><code>
+            elf.moveLeft(10);
+            elf.moveUp(10);
+            </code></pre>
+        </div>
+        <p>This was a simple introduction to movement and just required two elf command calls to move left 10 spaces and up 10 spaces.</p>
+    </div>
+    
+</body>
+</html>
+

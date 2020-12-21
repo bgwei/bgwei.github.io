@@ -1,0 +1,154 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <title>The Elf Code - Level 6</title>
+    <meta charset = "utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <!-- load header & initialize code blocks to be hidden-->
+    <script>
+        $(function(){ 
+          $("#header").load("header.html");
+          var x = document.getElementById("code");
+          x.style.display = "none"    
+        }); 
+    </script>
+</head>
+<body>
+    <div id="header"></div>
+    <div class = "container text-center">
+        <h1>LEVEL 6</h1>
+        <h3>Constraints</h3>
+        <p>Program the elf to the end goal in no more than 15 lines of code and no more than 7 elf command/function execution statements in your code.</p>
+        
+        <img src='img/elf-code/level6.png'/>
+        <h3>Challenges</h3>
+        <div class="tab">
+            <button class="challenge-tab-links" onclick="openChallenge(event, 'munchkin-challenge')">Munchkin</button>
+            <button class="challenge-tab-links" onclick="openChallenge(event, 'lever-challenge')">Lever</button>
+        </div>
+          
+          <div id="munchkin-challenge" class="challenge-tab-content">
+                <pre>
+Use elf.ask_munch(0) and I will return a JSON object similar to:
+{
+    "2ghd3":327,
+    "pwmcojfd":23,
+    "ivntirc":"asjkdhfg",
+    "qpwo":76,
+    "szixuchv":"lollipop",
+    "aiusywt":4,
+    "xmzxcv":"sdfhj",
+}
+Use elf.tell_munch(answer) to tell me the name of the key with a value of lollipop.
+                </pre>
+          </div>
+          
+          <div id="lever-challenge" class="challenge-tab-content">
+                <pre>
+Use elf.get_lever(0) to be returned an array similar to:
+[1, 2, 3, "c", "d", 4]
+Add the string "munchkins rule" to the front of this array. The example array above would become:
+["munchkins rule", 1, 2, 3, "c", "d", 4]
+Then submit this new array to elf.pull_lever(answer)
+                </pre>
+          </div>
+          
+            <script>
+          function openChallenge(evt, challengeName) {
+            var i, challengeTabContent, challengeTabLinks;
+            challengeTabContent = document.getElementsByClassName("challenge-tab-content");
+            // hide the contents of all tabs
+            for (i = 0; i < challengeTabContent.length; i++) {
+              challengeTabContent[i].style.display = "none";
+            }
+            challengeTabLinks = document.getElementsByClassName("challenge-tab-links");
+            // remove the active class from all tab links
+            for (i = 0; i < challengeTabLinks.length; i++) {
+              challengeTabLinks[i].className = challengeTabLinks[i].className.replace(" active", "");
+            }
+            // display the tab contents for the ID passed in by the button click
+            document.getElementById(challengeName).style.display = "block";
+            // add active to the classes of the clicked tab so its color displays slightly differently
+            // because we have the CSS set to display active slightly darker
+            evt.currentTarget.className += " active";
+          }
+            </script>
+
+        <h3>Solution</h3>
+        <script>
+            function showCode() {
+              var x, codeTabContent;
+              codeTabContent = document.getElementsByClassName("code-tab-content");
+              x = document.getElementById("code");
+              if (x.style.display === "none") {
+                x.style.display = "block";
+                // Hide code tab content because the above command will show it but
+                // we don't want it shown until a tab is clicked
+                for (i = 0; i < codeTabContent.length; i++) {
+                    codeTabContent[i].style.display = "none";
+                }
+              } else {
+                x.style.display = "none";
+              }
+            }
+        </script>
+        <button onclick="showCode()">Show Code</button>
+        <div id = "code">
+            <div class="tab">
+                <button class="code-tab-links" onclick="openCode(event, 'munchkin-code')">Munchkin Solution</button>
+                <button class="code-tab-links" onclick="openCode(event, 'lever-code')">Lever Solution</button>
+            </div>
+              
+              <div id="munchkin-code" class="code-tab-content">
+                    <pre>
+    Use elf.ask_munch(0) and I will return a JSON object similar to:
+    {
+        "2ghd3":327,
+        "pwmcojfd":23,
+        "ivntirc":"asjkdhfg",
+        "qpwo":76,
+        "szixuchv":"lollipop",
+        "aiusywt":4,
+        "xmzxcv":"sdfhj",
+    }
+    Use elf.tell_munch(answer) to tell me the name of the key with a value of lollipop.
+                    </pre>
+                    <p class = "text-left">Here I create a for loop to iterate through munchkinQuestion, which yields the keys for each pair in the object. I then use an if statement to check if the value associated with each key is “lollipop” and, if it is, I store the value of that key in munchkinAnswer and it’s good to go for neutralizing the munchkin later. A for loop like the one used in Level 3 to move to the lollipops, followed by a few more move commands complete the level.</p>
+              </div>
+              
+              <div id="lever-code" class="code-tab-content">
+                    <pre>
+    Use elf.get_lever(0) to be returned an array similar to:
+    [1, 2, 3, "c", "d", 4]
+    Add the string "munchkins rule" to the front of this array. The example array above would become:
+    ["munchkins rule", 1, 2, 3, "c", "d", 4]
+    Then submit this new array to elf.pull_lever(answer)
+                    </pre>
+                    <p class = "text-left">The alternative way to solve this level is to pull the lever so the munchkin falls in the pit. First we store the array we get from the lever in leverArray. The array method “unshift” places an element at the front of an array, so we put “munchkins rule” at the beginning of leverArray, use similar movement commands to the munchkin solution, and the level is completed.</p>
+              </div>
+              
+                <script>
+                function openCode(evt, codeName) {
+                    var i, codeTabContent, codeTabLinks;
+                    codeTabContent = document.getElementsByClassName("code-tab-content");
+                    for (i = 0; i < codeTabContent.length; i++) {
+                        codeTabContent[i].style.display = "none";
+                    }
+                    codeTabLinks = document.getElementsByClassName("code-tab-links");
+                    for (i = 0; i < codeTabLinks.length; i++) {
+                        codeTabLinks[i].className = codeTabLinks[i].className.replace(" active", "");
+                    }
+                    document.getElementById(codeName).style.display = "block";
+                    evt.currentTarget.className += " active";
+                }
+                </script>
+        </div>
+    </div>
+    
+</body>
+</html>
+

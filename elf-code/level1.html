@@ -1,0 +1,46 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <title>The Elf Code - Level 1</title>
+    <meta charset = "utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <!-- load header -->
+    <script>
+        $(function(){ 
+          $("#header").load("header.html");    
+        }); 
+    </script>
+</head>
+<body>
+    <div id="header"></div>
+    <div class = "container text-center">
+        <h1>LEVEL 1</h1>
+        <h3>Constraints</h3>
+        <p>Program the elf to the end goal in no more than 2 lines of code and no more than 2 elf commands.</p>
+        <img src='img/elf-code/level1.png'/>
+        <h3>Solution</h3>
+        <script>
+            function showCode() {
+              var x = document.getElementById("code");
+              if (x.style.display === "none") {
+                x.style.display = "block";
+              } else {
+                x.style.display = "none";
+              }
+            }
+        </script>
+        <button onclick="showCode()">Show Code</button>
+        <div id = "code">
+            <pre><code>
+            elf.moveLeft(10);
+            elf.moveUp(10);
+            </code></pre>
+        </div>
+        <p>This was a simple introduction to movement and just required two elf command calls to move left 10 spaces and up 10 spaces.</p>
+    </div>
+</body>
+</html>
