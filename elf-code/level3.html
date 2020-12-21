@@ -2,26 +2,29 @@
 
 <html lang="en">
 <head>
-    <title>The Elf Code - Level 1</title>
+    <title>The Elf Code - Level 3</title>
     <meta charset = "utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/main.css">
-    <!-- load header -->
+    <!-- load header & initialize code blocks to be hidden-->
     <script>
         $(function(){ 
-          $("#header").load("../header.html");    
+          $("#header").load("../header.html");
+          var x = document.getElementById("code");
+          x.style.display = "none"    
         }); 
     </script>
 </head>
 <body>
     <div id="header"></div>
     <div class = "container text-center">
-        <h1>LEVEL 1</h1>
+        <h1>LEVEL 3</h1>
         <h3>Constraints</h3>
-        <p>Program the elf to the end goal in no more than 2 lines of code and no more than 2 elf commands.</p>
-        <img src='../img/elf-code/level1.png'/>
+        <p>Program the elf to the end goal in no more than 4 lines of code and no more than 4 elf command/function execution statements in your code.</p>
+        
+        <img src='../img/elf-code/level3.png'/>
         <h3>Solution</h3>
         <script>
             function showCode() {
@@ -36,11 +39,15 @@
         <button onclick="showCode()">Show Code</button>
         <div id = "code">
             <pre>
-elf.moveLeft(10);
-elf.moveUp(10);
+for (var i = 0; i < 3; i++) {
+  elf.moveTo(lollipop[i]);
+}
+elf.moveUp(1);              
             </pre>
         </div>
-        <p>This was a simple introduction to movement and just required two elf command calls to move left 10 spaces and up 10 spaces.</p>
+        <p class = "text-left">A for loop is used to move to each lollipop - incrementing the lollipop index every time you reach the previous lollipop works perfectly here. After reaching the last one, you need only move up 1.</p>
     </div>
+    
 </body>
 </html>
+

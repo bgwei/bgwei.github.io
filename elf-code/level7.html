@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-    <title>The Elf Code - Level 8</title>
+    <title>The Elf Code - Level 7</title>
     <meta charset = "utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,12 +22,12 @@
 <body>
     <div id="header"></div>
     <div class = "container text-center">
-        <h1>LEVEL 8</h1>
+        <h1>LEVEL 7</h1>
         <h3>Constraints</h3>
-        <p>Program the elf to the end goal in no more than 40 lines of code and no more than 10 elf command/function execution statements in your code.</p>
+        <p>Program the elf to the end goal in no more than 25 lines of code and no more than 10 elf command/function execution statements in your code.</p>
         <p>elf.moveTo(object) has been disabled for this challenge.</p>
         
-        <img src='../img/elf-code/level8.png'/>
+        <img src='../img/elf-code/level7.png'/>
         <h3>Challenges</h3>
         <div class="tab">
             <button class="challenge-tab-links" onclick="openChallenge(event, 'munchkin-challenge')">Munchkin</button>
@@ -37,33 +37,23 @@
           <div id="munchkin-challenge" class="challenge-tab-content">
                 <pre>
 Create a function that will accept one argument.
-Your created function will be passed a randomized array containing json objects as its one_argument.
+Your created function will be passed a randomized array containing arrays which contain strings and numbers.
 For example:
 [
-    {"qpwo":76,"szixuchv":"lollipop","aiusywt":4,"xmzxcv":"sdfhj"},
-    {"aklgr":234,"yuigwer":"qwuieyr","xcmvp":21},
-    {"qopwue":"aosdfh","szixuchv":45,"hfas":35,"qiowphq":2,"zxc":"bgqwuygfvq"},
-    {"zxcvzkj":"azga","wieyr":36},
+    [1,"sdff",2,9,"olidfhj",6],
+    [2,5,1,"jdhgwe",4],
+    ["wyuier",2,2,9,2,"jfghwgfb",5],
+    [4,"bnwc",9]
 ]
-Your created function must be able to iterate over this randomized array of json objects and return the string name of the key with a string value of lollipop (see above example).
-Once you have created this function and are sure it will return the desired string key name, pass your function as an argument to me:
-elf.tell_munch(YourFunctionNameHere)                  
+Your created function must be able to iterate over this randomized array and each of its child arrays and return the total sum of adding all of the numbers in all of the child arrays.
+Once you have created this function and are sure it will return the desired sum, pass your created function as an argument to me:
+elf.tell_munch(YourFunctionNameHere)
                 </pre>
           </div>
           
           <div id="lever-challenge" class="challenge-tab-content">
                 <pre>
-Your task is to sum up all the values of elf.get_lever(x) for the lever you are on and intend to elf.pull_lever(x) and for all the previous levers.
-For example, if you wanted to elf.pull_lever(0), you could use:
-var num0 = elf.get_lever(0)
-elf.pull_lever(num0)
-Then, if you wanted to pull lever 1, you would expand the previous example to:
-var num0 = elf.get_lever(0)
-elf.pull_lever(num0)
-elf.moveUp(2)
-elf.moveLeft(3)
-var num1 = elf.get_lever(1)
-elf.pull_lever(num0 + num1)                  
+Submit elf.pull_lever(x) and I'll lift the next bridge, where x is the number of the lever.
                 </pre>
           </div>
           
@@ -102,18 +92,20 @@ elf.pull_lever(num0 + num1)
         <button onclick="showCode()">Show Code</button>
         <div id = "code">
             <pre>
-function lollipopFinder(munchkinQuestion) {
-      for (var i = 0; i < munchkinQuestion.length; i++) {
-            for (key in munchkinQuestion[i]) {
-                  if (munchkinQuestion[i][key] === "lollipop") {
-                      return key;
-                  }
+function munchkinFunction(munchkinQuestion) {
+    var munchkinAnswer = 0;
+    for (var i = 0; i < munchkinQuestion.length; i++) {
+        for (var j = 0; j < munchkinQuestion[i].length; j++) {
+                if (typeof munchkinQuestion[i][j] === "number") {
+                        munchkinAnswer += munchkinQuestion[i][j];
+                }
             }
-      }
-}          
+}
+    return munchkinAnswer
+}
             </pre>
         </div>
-        <p class = "text-left">First we create the function “lollipopFinder” to satisfy the munchkin’s challenge. It’s an array of JSON objects, which in turn contain the key:value pairs we need to search for “lollipop.” We use 2 for loops: the first one iterates through the array for each JSON object, then the second iterates through each key of the JSON object and checks if its corresponding value is “lollipop”. If a key’s value is, in fact, “lollipop”, that key is immediately returned. Even though we only have to tell the munchkin the answer once, the call to “elf.tell_munch” is included in the for loop at the appropriate spot so that it will activate when we reach the munchkin. It will activate pointlessly as we’re moving through the maze, but including it here reduces line count and removes the need to add separate logic to make sure it is only activated at the correct point.</p>
+        <p class = "text-left">First, I defined the function required to neutralize the munchkin and initialized munchkinAnswer. At the end of this function munchkinAnswer will be returned in order to satisfy the munchkin’s requirements. Two for loops were necessary because he was giving us an array of arrays, so we first had to iterate through the outer array to get each of the inner arrays, and then iterate through each of the inner arrays to get their elements. A quick if statement checks to make sure the element we’re looking at is of type “number” and if it is, adds that number to munchkinAnswer. </p>
         <script>
             function showCode2() {
               var x = document.getElementById("code2");
@@ -127,22 +119,24 @@ function lollipopFinder(munchkinQuestion) {
         <button onclick="showCode2()">Show Code</button>
         <div id = "code2">
             <pre>
-var leverSum = 0;
-for (var i = 0; i < 20; i++){
-      if (i%2 == 0){
-            elf.moveRight(2*i+1);
-      } else if (i%2 ==1){
-            elf.moveLeft(2*i+1);
-      }
-      leverSum += elf.get_lever(i);
-      elf.pull_lever(leverSum);
-      elf.moveUp(2);
-    elf.tell_munch(lollipopFinder)
-}              
+for (var i = 0; i < 8; i++) {
+    if (i % 4 == 0) {
+            elf.moveDown(i + 1);
+    } else if (i % 4 == 1) {
+            elf.moveLeft(i + 1);
+    } else if (i % 4 == 2) {
+            elf.moveUp(i + 1);
+    } else if (i % 4 == 3) {
+            elf.moveRight(i + 1);
+    }
+    elf.pull_lever(i);
+}
+elf.moveUp(2),elf.moveLeft(4),elf.tell_munch(munchkinFunction),elf.moveUp(2);
             </pre>
         </div>
-        <p class = "text-left">Next we need the logic for the movement. We alternate between left and right, so % 2 will be appropriate to handle this alternation. The amount that we must move each time we alternate actually increases by 2 each time, so 2*i is used to account for this in our movement commands and offset by +1 since our for loop starts with i=0. Between each alternation we must move up by two, so that is included in each for loop after the left/right movement is chosen. We also need to take care of the lever logic. We initialize leverSum to 0. Then, every time we reach a lever, we get the number from that lever and add it to leverSum so that we can submit it to activate the lever. And with that we’ve beaten the last level!</p>
+        <p class = "text-left">With the munchkin function out of the way, we now needed a way to navigate the spiral to actually make it to the green circle. Much like Level 4, we need to alternate through a pattern of directions so % is appropriate. This time we use % 4 because there are 4 directions we need to decide between. As we iterate it will cycle through these 4 directions in the order of their remainders, so they were set up in the order down, left, up, right. Also of note is that each spiral segment is one step longer than the previous - we can take this into account by using the index of our for loop as the argument for the movement methods in order to increment the amount of steps we are taking by 1 each time. Note that we must use i+1 because we start at index 0 and we want 1 step not  0 first, so we must increase the index by 1 to offset this. After each movement a lever must be pulled, so after the if logic to determine direction and move a call to elf.pull_lever is made using the index to specify the lever we are pulling (the levers go in order from 0 to 6). Once we have escaped the spiral, we need just a few more move commands and a command to get past the munchkin. For me my code ended up being 2 lines too long for the constraint, so I lumped all these commands into the same statement. And that’s it!</p>
     </div>
+    
 </body>
 </html>
 

@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../css/main.css">
     <!-- load header & initialize code blocks to be hidden-->
     <script>
         $(function(){ 
-          $("#header").load("header.html");
+          $("#header").load("../header.html");
           var x = document.getElementById("code");
           x.style.display = "none"    
         }); 
@@ -24,7 +24,7 @@
         <h3>Constraints</h3>
         <p>Program the elf to the end goal in no more than 15 lines of code and no more than 7 elf command/function execution statements in your code.</p>
         
-        <img src='img/elf-code/level6.png'/>
+        <img src='../img/elf-code/level6.png'/>
         <h3>Challenges</h3>
         <div class="tab">
             <button class="challenge-tab-links" onclick="openChallenge(event, 'munchkin-challenge')">Munchkin</button>
@@ -105,28 +105,28 @@ Then submit this new array to elf.pull_lever(answer)
               
               <div id="munchkin-code" class="code-tab-content">
                     <pre>
-    Use elf.ask_munch(0) and I will return a JSON object similar to:
-    {
-        "2ghd3":327,
-        "pwmcojfd":23,
-        "ivntirc":"asjkdhfg",
-        "qpwo":76,
-        "szixuchv":"lollipop",
-        "aiusywt":4,
-        "xmzxcv":"sdfhj",
-    }
-    Use elf.tell_munch(answer) to tell me the name of the key with a value of lollipop.
+Use elf.ask_munch(0) and I will return a JSON object similar to:
+{
+    "2ghd3":327,
+    "pwmcojfd":23,
+    "ivntirc":"asjkdhfg",
+    "qpwo":76,
+    "szixuchv":"lollipop",
+    "aiusywt":4,
+    "xmzxcv":"sdfhj",
+}
+Use elf.tell_munch(answer) to tell me the name of the key with a value of lollipop.
                     </pre>
                     <p class = "text-left">Here I create a for loop to iterate through munchkinQuestion, which yields the keys for each pair in the object. I then use an if statement to check if the value associated with each key is “lollipop” and, if it is, I store the value of that key in munchkinAnswer and it’s good to go for neutralizing the munchkin later. A for loop like the one used in Level 3 to move to the lollipops, followed by a few more move commands complete the level.</p>
               </div>
               
               <div id="lever-code" class="code-tab-content">
                     <pre>
-    Use elf.get_lever(0) to be returned an array similar to:
-    [1, 2, 3, "c", "d", 4]
-    Add the string "munchkins rule" to the front of this array. The example array above would become:
-    ["munchkins rule", 1, 2, 3, "c", "d", 4]
-    Then submit this new array to elf.pull_lever(answer)
+Use elf.get_lever(0) to be returned an array similar to:
+[1, 2, 3, "c", "d", 4]
+Add the string "munchkins rule" to the front of this array. The example array above would become:
+["munchkins rule", 1, 2, 3, "c", "d", 4]
+Then submit this new array to elf.pull_lever(answer)
                     </pre>
                     <p class = "text-left">The alternative way to solve this level is to pull the lever so the munchkin falls in the pit. First we store the array we get from the lever in leverArray. The array method “unshift” places an element at the front of an array, so we put “munchkins rule” at the beginning of leverArray, use similar movement commands to the munchkin solution, and the level is completed.</p>
               </div>

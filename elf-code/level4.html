@@ -1,0 +1,56 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <title>The Elf Code - Level 4</title>
+    <meta charset = "utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/main.css">
+    <!-- load header & initialize code blocks to be hidden-->
+    <script>
+        $(function(){ 
+          $("#header").load("../header.html");
+          var x = document.getElementById("code");
+          x.style.display = "none"    
+        }); 
+    </script>
+</head>
+<body>
+    <div id="header"></div>
+    <div class = "container text-center">
+        <h1>LEVEL 4</h1>
+        <h3>Constraints</h3>
+        <p>Program the elf to the end goal in no more than 7 lines of code and no more than 6 elf command/function execution statements in your code.</p>
+        
+        <img src='../img/elf-code/level4.png'/>
+        <h3>Solution</h3>
+        <script>
+            function showCode() {
+              var x = document.getElementById("code");
+              if (x.style.display === "none") {
+                x.style.display = "block";
+              } else {
+                x.style.display = "none";
+              }
+            }
+        </script>
+        <button onclick="showCode()">Show Code</button>
+        <div id = "code">
+            <pre>
+for (var i = 0; i < 5; i++) {
+    elf.moveLeft(3);
+    if (i % 2 == 0)
+    elf.moveUp(11);
+else if (i % 2 == 1)
+    elf.moveDown(11);
+}
+            </pre>
+        </div>
+        <p class = "text-left">Here I used a for loop for the constant moving up and down on this level. Because running into an obstacle has no negative impact, I used elf.moveLeft(3) to cover all leftward movements - while still in the maze you will simply bump into a barrel then move up or down and once out of the maze, 3 is the number of spaces you must move to collect the lollipop and align with the green circle. I used i%2 in my conditionals so that every time the for loop incremented it would alternate between moving up or down.</p>
+    </div>
+    
+</body>
+</html>
+

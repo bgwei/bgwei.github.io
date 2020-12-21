@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+    <title>The Elf Code - Level 5</title>
+    <meta charset = "utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/main.css">
+    <!-- load header & initialize code blocks to be hidden-->
+    <script>
+        $(function(){ 
+          $("#header").load("../header.html");
+          var x = document.getElementById("code");
+          x.style.display = "none"    
+        }); 
+    </script>
+</head>
+<body>
+    <div id="header"></div>
+    <div class = "container text-center">
+        <h1>LEVEL 5</h1>
+        <h3>Constraints</h3>
+        <p>Program the elf to the end goal in no more than 10 lines of code and no more than 5 elf command/function execution statements in your code.</p>
+        
+        <img src='../img/elf-code/level5.png'/>
+        <h3>Challenges</h3>
+        <div class="tab">
+            <button class="challenge-tab-links" onclick="openChallenge(event, 'munchkin-challenge')">Munchkin</button>
+        </div>
+          
+        <div id="munchkin-challenge" class="challenge-tab-content">
+              <pre>
+Use elf.ask_munch(0) and I will send you an array of numbers and strings similar to:
+
+[1, 3, "a", "b", 4]
+
+Return an array that contains only numbers from the array that I give you. Send your answer using elf.tell_munch(answer).
+              </pre>
+        </div>
+          
+            <script>
+          function openChallenge(evt, challengeName) {
+            var i, challengeTabContent, challengeTabLinks;
+            challengeTabContent = document.getElementsByClassName("challenge-tab-content");
+            // hide the contents of all tabs
+            for (i = 0; i < challengeTabContent.length; i++) {
+              challengeTabContent[i].style.display = "none";
+            }
+            challengeTabLinks = document.getElementsByClassName("challenge-tab-links");
+            // remove the active class from all tab links
+            for (i = 0; i < challengeTabLinks.length; i++) {
+              challengeTabLinks[i].className = challengeTabLinks[i].className.replace(" active", "");
+            }
+            // display the tab contents for the ID passed in by the button click
+            document.getElementById(challengeName).style.display = "block";
+            // add active to the classes of the clicked tab so its color displays slightly differently
+            // because we have the CSS set to display active slightly darker
+            evt.currentTarget.className += " active";
+          }
+            </script>
+
+        <h3>Solution</h3>
+        <script>
+            function showCode() {
+              var x = document.getElementById("code");
+              if (x.style.display === "none") {
+                x.style.display = "block";
+              } else {
+                x.style.display = "none";
+              }
+            }
+        </script>
+        <button onclick="showCode()">Show Code</button>
+        <div id = "code">
+            <pre>
+var munchkinQuestion = elf.ask_munch(0);
+var munchkinAnswer = munchkinQuestion.filter(elem => typeof elem === 'number');
+elf.moveTo(munchkin[0]);
+elf.tell_munch(munchkinAnswer);
+elf.moveUp(2);              
+            </pre>
+        </div>
+        <p class = "text-left">Here I simply retrieved the munchkin’s input with munchkinQuestion, computed the answer by filtering the input array for elements of type “number,” and stored that answer in munchkinAnswer. Some simple movement commands and a call to give the munchkin the answer complete the level.</p>
+    </div>
+    
+</body>
+</html>

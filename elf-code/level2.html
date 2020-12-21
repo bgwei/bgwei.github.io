@@ -1,0 +1,91 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <title>The Elf Code - Level 2</title>
+    <meta charset = "utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/main.css">
+    <!-- load header & initialize code blocks to be hidden-->
+    <script>
+        $(function(){ 
+          $("#header").load("../header.html");
+          var x = document.getElementById("code");
+          x.style.display = "none"    
+        }); 
+    </script>
+</head>
+<body>
+    <div id="header"></div>
+    <div class = "container text-center">
+        <h1>LEVEL 2</h1>
+        <h3>Constraints</h3>
+        <p>Program the elf to the end goal in no more than 5 lines of code and no more than 5 elf command/function execution statements in your code.</p>
+        
+        <img src='../img/elf-code/level2.png'/>
+        <h3>Challenges</h3>
+        <div class="tab">
+            <button class="challenge-tab-links" onclick="openChallenge(event, 'lever-challenge')">Lever</button>
+        </div>
+          
+          <div id="lever-challenge" class="challenge-tab-content">
+                <pre>
+Add 2 to the returned numeric value of running the function elf.get_lever(0) .
+
+For example, if you wanted to multiply the value by 3 and store to a variable, you could do:
+var sum = elf.get_lever(0) * 3
+
+Then submit the sum using:
+elf.pull_lever(sum)
+                </pre>
+          </div>
+          
+            <script>
+          function openChallenge(evt, challengeName) {
+            var i, challengeTabContent, challengeTabLinks;
+            challengeTabContent = document.getElementsByClassName("challenge-tab-content");
+            // hide the contents of all tabs
+            for (i = 0; i < challengeTabContent.length; i++) {
+              challengeTabContent[i].style.display = "none";
+            }
+            challengeTabLinks = document.getElementsByClassName("challenge-tab-links");
+            // remove the active class from all tab links
+            for (i = 0; i < challengeTabLinks.length; i++) {
+              challengeTabLinks[i].className = challengeTabLinks[i].className.replace(" active", "");
+            }
+            // display the tab contents for the ID passed in by the button click
+            document.getElementById(challengeName).style.display = "block";
+            // add active to the classes of the clicked tab so its color displays slightly differently
+            // because we have the CSS set to display active slightly darker
+            evt.currentTarget.className += " active";
+          }
+            </script>
+
+        <h3>Solution</h3>
+        <script>
+            function showCode() {
+              var x = document.getElementById("code");
+              if (x.style.display === "none") {
+                x.style.display = "block";
+              } else {
+                x.style.display = "none";
+              }
+            }
+        </script>
+        <button onclick="showCode()">Show Code</button>
+        <div id = "code">
+            <pre>
+elf.moveLeft(6);
+elf.pull_lever(elf.get_lever(0)+2);
+elf.moveLeft(4);
+elf.moveUp(10);
+            </pre>
+        </div>
+        <p class = "text-left">Again, relatively straightforward, this was an introduction to interacting with the levers. A few move commands and (elf.get_lever(0)+2) to add 2 to whatever arbitrary value you are given.</p>
+    </div>
+    
+</body>
+</html>
+
