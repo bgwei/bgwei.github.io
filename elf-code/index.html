@@ -1,0 +1,39 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <title>The Elf Code</title>
+    <meta charset = "utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/main.css">
+    <!-- load header -->
+    <script>
+        $(function(){ 
+          $("#header").load("/header.html");    
+        }); 
+    </script>
+</head>
+<body> 
+    <div id="header"></div>
+    <div class="container text-center">
+        <img src="../img/elf-code/elf-code-banner.png"/>
+        <img src="../img/elf-code/full-ui.png"/>
+        <div class="text-left">
+        <p>This challenge was a mini-game designed to introduce people new to JavaScript - which was definitely me, so it was very helpful! 
+            Considering JavaScript shows up everywhere online (and on the website for the con), it’s certainly useful to have a 
+            <a href="https://jgthms.com/javascript-in-14-minutes/">primer</a>. You might even be able to solve some of the other challenges by
+            understanding and manipulating the JavaScript source for the page. And, as a bonus, the game was a lot of fun! </p>
+        <p>Anyways, the player is tasked with moving around a grid to collect lollipops and reach the green circle. 
+            The player is given a number of methods which are fairly straightforward (elf.moveLeft(2) moves the elf two spaces left for example) 
+            to work with and some constraints on the code. Note that one of these constraints is always code length - 
+            if you find your code is too long you could minify it. For example, my original 27-line code for Level 7 could be minified to just 7 with 
+            <a href="https://javascript-minifier.com/">this tool!</a></p>
+        <p>There are also levers which activate/deactivate traps and enemy “munchkins.” In order to activate the levers or neutralize the munchkins, 
+            the player must complete an additional programming challenge and submit its output to the lever/munchkin.</p>
+        </div>
+    </div>
+    <button class = "next-page-button" onclick="document.location='level1.html'">NEXT ></button>
+</body>
+</html>

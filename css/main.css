@@ -40,10 +40,22 @@ governs that little menu arrow indicating a sub-menu. It's so minor I might remo
     border-left-color: #ffffff;
   } 
 
-  .bg-red {
-    background: #b71818;
+  .bg-green {
+    background: green;
   }
 
+  .bg-snowflakes {
+    background-image: url("http://wonderworlds.org/images/snowflakes/snowflakes-paper-background-silver.jpg")
+  }
+/* underline links in paragraphs */
+  p a {
+    text-decoration: underline;
+  }
+
+  .navbar {
+    border: solid;
+    border-width: 0 0 5px 0;
+  }
   .navbar-nav a{
       color: black;
       font-size: 30px;
@@ -143,4 +155,24 @@ pre {
   @keyframes fadeEffect {
     from {opacity: 0;}
     to {opacity: 1;}
+  }
+
+  .next-page-button {
+    background: green;
+    display: block;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    color: white;
+    font-size: 30px;
+  }
+
+  .prev-page-button {
+    background: #b71818;
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    color: white;
+    font-size: 30px;
   }

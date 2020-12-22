@@ -143,6 +143,7 @@ for (var i = 0; i < 20; i++){
         </div>
         <p class = "text-left">Next we need the logic for the movement. We alternate between left and right, so % 2 will be appropriate to handle this alternation. The amount that we must move each time we alternate actually increases by 2 each time, so 2*i is used to account for this in our movement commands and offset by +1 since our for loop starts with i=0. Between each alternation we must move up by two, so that is included in each for loop after the left/right movement is chosen. We also need to take care of the lever logic. We initialize leverSum to 0. Then, every time we reach a lever, we get the number from that lever and add it to leverSum so that we can submit it to activate the lever. And with that we’ve beaten the last level!</p>
     </div>
+    <button class = "prev-page-button" onclick="document.location='level7.html'">< PREV</button> 
 </body>
 </html>
 

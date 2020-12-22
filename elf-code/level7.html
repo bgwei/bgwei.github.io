@@ -136,7 +136,8 @@ elf.moveUp(2),elf.moveLeft(4),elf.tell_munch(munchkinFunction),elf.moveUp(2);
         </div>
         <p class = "text-left">With the munchkin function out of the way, we now needed a way to navigate the spiral to actually make it to the green circle. Much like Level 4, we need to alternate through a pattern of directions so % is appropriate. This time we use % 4 because there are 4 directions we need to decide between. As we iterate it will cycle through these 4 directions in the order of their remainders, so they were set up in the order down, left, up, right. Also of note is that each spiral segment is one step longer than the previous - we can take this into account by using the index of our for loop as the argument for the movement methods in order to increment the amount of steps we are taking by 1 each time. Note that we must use i+1 because we start at index 0 and we want 1 step not  0 first, so we must increase the index by 1 to offset this. After each movement a lever must be pulled, so after the if logic to determine direction and move a call to elf.pull_lever is made using the index to specify the lever we are pulling (the levers go in order from 0 to 6). Once we have escaped the spiral, we need just a few more move commands and a command to get past the munchkin. For me my code ended up being 2 lines too long for the constraint, so I lumped all these commands into the same statement. And that’s it!</p>
     </div>
-    
+    <button class = "prev-page-button" onclick="document.location='level6.html'">< PREV</button>
+    <button class = "next-page-button" onclick="document.location='level8.html'">NEXT ></button>   
 </body>
 </html>
 
